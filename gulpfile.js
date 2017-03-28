@@ -10,7 +10,7 @@ const plumber = require('gulp-plumber');
 const sass = require('gulp-sass');
 const uglify = require('gulp-uglify');
 
-const path = './slide/';
+const path = './docs/';
 const sassPath = './src/sass/';
 const libPath = './src/libs/';
 
