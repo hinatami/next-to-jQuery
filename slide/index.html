@@ -1,0 +1,1464 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jQuery 次の一歩 | Creator's Lab 2017-03-09</title>
+<meta name="description" content="「jQuery 次の一歩」というお題で、某社内勉強会で発表した時の資料です。">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,700,700i%7CMaitree:200,300,400,600,700&amp;subset=latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anonymous+Pro"> 
+<link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/mplus1p.css">
+<link rel="stylesheet" href="./css/lib.css">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <header role="banner" class="my-header">
+    <h1 class="my-header-title alignleft">jQuery 次の一歩</h1>
+    <p class="my-header-date alignright">Creator's Lab 2017-03-09</p>
+  </header>
+    
+  <main role="main">
+    <article id="webslides">
+
+      <section class="bg-gray">
+        <span class="background dark" style="background-image:url('./images/slide_cover.jpg')"></span>
+        <div class="wrap aligncenter">
+          <h1>jQuery 次の一歩</h1>
+        </div>
+      </section>
+
+      <!-- start Table of Contents -->
+      <section class="bg-light">
+        <div class="wrap size-50">
+          <h2 class="my-toc-title">Table of Contents</h2>
+          <hr>
+          <div class="toc my-toc">
+            <ol>
+              <li>
+                <span class="chapter">第1章　jQuery</span>
+                <span class="toc-page">03</span>
+              </li>
+              <li>
+                <span class="chapter">第2章　次の一歩</span>
+                <span class="toc-page">14</span>
+              </li>
+              <li>
+                <span class="chapter">第3章　jQuery to Next</span>
+                <span class="toc-page">23</span>
+              </li>
+              <li>
+                <span class="chapter">第4章　ECMAScript</span>
+                <span class="toc-page">51</span>
+              </li>
+              <li>
+                <span class="chapter">第5章　実践タイム</span>
+                <span class="toc-page">65</span>
+              </li>
+            </ol>
+          </div><!-- end .toc -->
+        </div>
+      </section>
+
+      <!-- start 第1章 jQuery -->
+      <section class="bg-jquery frame aligncenter">
+        <div class="wrap">
+          <h2 class="my-chapter-title"><span class="small">第1章</span>　jQuery</h2>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第1章</span>　jQuery</div>
+          <h3 class="my-page-title">なんで jQuery？</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">簡単な記述でDOMの選択・操作が可能</li>
+              <li class="my-list-item">ブラウザ間の差異を吸収してくれる<br>
+              ＝ クロスブラウザ対応を意識せずに書ける</li>
+              <li class="my-list-item">プラグインが豊富<br>
+              ＝ 自分でコードを書かなくてもいろんな処理ができる</li>
+              <li class="my-list-item">チェーンメソッドでサクサク書ける</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第1章</span>　jQuery</div>
+          <h3 class="my-page-title">jQueryの弱点</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">アニメーションが遅い</li>
+              <li class="my-list-item">セレクタの書き方によっては動作が遅くなる</li>
+              <li class="my-list-item">そもそもjQuery自体を読み込む分だけ動作が遅くなる</li>
+              <li class="my-list-item">プラグインが古くなってきてる・メンテナンスされてないのが多い（非効率な書き方をされてるかもしれない）</li>
+              <li class="my-list-item">AngularJSなどのフレームワークと相性が悪いことがある</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第1章</span>　jQuery</div>
+          <h3 class="my-page-title">jQueryのバージョン</h3>
+          <div class="my-page-body">
+            <p class="my-text-normal">現在提供されているバージョンは以下の通り。<small>（2017年3月8日時点）</small></p>
+            </p>
+            <ul class="my-list">
+              <li class="my-list-item">1系（最新 version：1.12.4）<small> ※更新ストップ</small></li>
+              <li class="my-list-item">2系（最新 version：2.2.4）<small> ※更新ストップ</small></li>
+              <li class="my-list-item">3系（最新 version：3.1.1）</li>
+              <li class="my-list-item">3系 スリムビルド（最新 version：3.1.1.slim）</li>
+            </ul>
+            <p class="my-text-notes">[Download jQuery | jQuery] <a href="http://jquery.com/download/" target="_blank">http://jquery.com/download/</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第1章</span>　jQuery</div>
+          <h3 class="my-page-title">jQuery 3系（2系）</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading01">サポートブラウザ</h4>
+            <ul class="my-list">
+              <li class="my-list-item">Internet Explorer：9+</li>
+              <li class="my-list-item">Chrome, Firefox, Edge, Safari：最新2バージョン</li>
+              <li class="my-list-item">Opera：最新版</li>
+              <li class="my-list-item">iOS Safari：iOS 7+</li>
+              <li class="my-list-item">Android：4.0+</li>
+            </ul>
+            <p class="my-text-notes">[Browser Support | jQuery] <a href="http://jquery.com/browser-support/" target="_blank">http://jquery.com/browser-support/</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第1章</span>　jQuery</div>
+          <h3 class="my-page-title">jQuery 1系</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading01">サポートブラウザ</h4>
+            <ul class="my-list">
+              <li class="my-list-item">3系のサポートブラウザ</li>
+              <li class="my-list-item">Internet Explorer：6-8</li>
+              <li class="my-list-item">Opera：12.1x</li>
+              <li class="my-list-item">Safari：5.1+</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第1章</span>　jQuery</div>
+          <h3 class="my-page-title">jQuery 2系と3系の違い</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">サポートブラウザは同じ</li>
+              <li class="my-list-item">3系は、新しいブラウザ / JS事情に合わせて作り直された</li>
+              <li class="my-list-item">非推奨だったAPIや隠しAPIが削除された</li>
+              <li class="my-list-item">一部破壊的な変更があり、互換性がないので要注意</li>
+            </ul>
+            <p class="my-text-notes">[jQuery Core 3.0 Upgrade Guide | jQuery] <a href="https://jquery.com/upgrade-guide/3.0/" target="_blank">https://jquery.com/upgrade-guide/3.0/</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第1章</span>　jQuery</div>
+          <h3 class="my-page-title">jQuery 2系→3系の変更点</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item"><code>.load()</code>, <code>.unload()</code>, <code>.error()</code>の削除（<code>.on()</code>を利用しましょう）</li>
+              <li class="my-list-item"><code>.on('ready', fn)</code>の削除（<code>$(fn)</code>を利用しましょう）</li>
+              <li class="my-list-item"><code>.show()</code>, <code>.hide()</code>の仕様変更（css + <code>.addClass()</code>などで対応しましょう）</li>
+            </ul>
+            <p class="my-text-normal">などなど、色々ありますが割愛。知りたい人は調べてみてね。</p>
+            <p class="my-text-notes">[jQuery Core 3.0 Upgrade Guide | jQuery] <a href="https://jquery.com/upgrade-guide/3.0/" target="_blank">https://jquery.com/upgrade-guide/3.0/</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第1章</span>　jQuery</div>
+          <h3 class="my-page-title">jQuery スリムビルド（Slim build）</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">Ajaxモジュールとeffectsモジュール、さらに現時点で非推奨となっているAPIを除外したもの</li>
+              <li class="my-list-item">Ajaxでの通信機能やアニメーション処理の必要がないサイトでは、こちらを使うと良さそう</li>
+              <li class="my-list-item">当然、通常版より少し軽い（v3.1.1 compressedでは、<br>
+              通常版：87KB / スリムビルド：69KB）</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第1章</span>　jQuery</div>
+          <h3 class="my-page-title">どれを使えばいいの？</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">基本的には3系を使おう</li>
+              <li class="my-list-item">条件次第ではSlim buildがオススメ</li>
+              <li class="my-list-item">jQuery CDNを使う場合はセキュリティ関係の属性に要注意</li>
+            </ul>
+            <p class="my-text-notes">[jQuery CDN] <a href="https://code.jquery.com/" target="_blank">https://code.jquery.com/</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第1章</span>　jQuery</div>
+          <h3 class="my-page-title">jQuery まとめ</h3>
+          <div class="my-page-body">
+            <p class="my-conclusion my-conclusion__jquery fadeIn slow">jQuery 簡単で良い！ 便利！</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- start 第2章 Vanilla JS -->
+      <section class="bg-vanilla frame aligncenter">
+        <div class="wrap">
+          <h2 class="my-chapter-title"><span class="small">第2章</span>　次の一歩</h2>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第2章</span>　次の一歩</div>
+          <h3 class="my-page-title">“私が考える” 次の一歩</h3>
+          <div class="my-page-body">
+            <p class="my-conclusion my-conclusion__vanilla fadeIn slow">Vanilla JS！</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第2章</span>　次の一歩</div>
+          <h3 class="my-page-title">Vanilla JS って何？</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">強力なJavaScript製アプリケーションのための、高速・軽量・クロスプラットフォームなフレームワーク</li>
+              <li class="my-list-item">Facebook / Google / YouTube / Yahoo / Twitter / Amazon ... などなど、数々の企業で採用されている</li>
+              <li class="my-list-item">jQueryよりもたくさんのサイトで使われているフレームワーク</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第2章</span>　次の一歩</div>
+          <h3 class="my-page-title">Vanilla JSの使い方</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">公式サイトから必要な機能を選んでダウンロード（全部入りでOK！）</li>
+              <li class="my-list-item">ダウンロードしたファイルをscript要素で読み込めばいい<br>
+              …のだけど、Vanilla JSはあまりにもよく使われてるから読み込ませなくてもブラウザが勝手に使ってくれるよ！</li>
+            </ul>
+            <p class="my-text-notes">[Vanilla JS] <a href="http://vanilla-js.com/" target="_blank">http://vanilla-js.com/</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第2章</span>　次の一歩</div>
+          <h3 class="my-page-title">Vanilla JS めちゃ軽い</h3>
+          <div class="my-page-body zoomIn">
+            <img class="aligncenter" src="./images/vanillajs.png" alt="Vanilla JSのソースコード">
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第2章</span>　次の一歩</div>
+          <h3 class="my-page-title">なんで Vanilla JS？</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">jQueryの弱点である「遅い」を解決できる</li>
+              <li class="my-list-item">古いブラウザをサポートする必要がなくなってきた<br>
+              ＝ jQueryを使う必要がないかもしれない</li>
+              <li class="my-list-item">JavaScriptも進化している。新機能を使えるのなら使っていったほうがいいよね</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第2章</span>　次の一歩</div>
+          <h3 class="my-page-title">Vanilla JSの弱点</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">とはいえ、まだブラウザ間での非互換性はあったりする<br>
+              ＝ jQuery等のツールがないとツライ場面もまだまだある</li>
+              <li class="my-list-item">慣れるまでは、ブラウザごとの実装状況を確認したり、挙動を確認したりする手間が必要かもしれない</li>
+              <li class="my-list-item">がんばって書くのは時間がかかるかもしれない</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第2章</span>　次の一歩</div>
+          <h3 class="my-page-title">それでも Vanilla JS 推し？</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">あくまで私の個人的な意見ですが…</li>
+              <li class="my-list-item">脱jQueryをする必要はないと思ってる</li>
+              <li class="my-list-item">Vanilla JSとjQueryをうまく使い分けできたらいいんじゃないかなって</li>
+              <li class="my-list-item">必要なさそうなら無駄にjQueryを使わなくてもいいし</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第2章</span>　次の一歩</div>
+          <h3 class="my-page-title">結論</h3>
+          <div class="my-page-body">
+            <p class="my-conclusion my-conclusion__vanilla fadeIn slow">適材適所</p>
+            <p class="my-text-normal align-center fadeIn slow">を、考えられる知識を身に付けることが「次の一歩」かな、と…</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- start 第3章 jQuery to Vanilla JS -->
+      <section class="bg-js frame aligncenter">
+        <div class="wrap">
+          <h2 class="my-chapter-title"><span class="small">第3章</span>　jQuery to Vanilla JS</h2>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">セレクタ (1)</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">idによる選択</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$('#id');</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">document.querySelector('#id');
+// or
+document.getElementById('id');</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+
+            <h4 class="my-heading02">element(html要素)による選択</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$('selector');</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">document.querySelectorAll('selector');
+// or
+document.getElementsByTagName('selector');</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">セレクタ (2)</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">classによる選択</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$('.class');</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">document.querySelectorAll('.class');
+// or
+document.getElementsByClassName('class');</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+
+            <h4 class="my-heading02">属性による選択</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$('a[target=_blank]');</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">document.querySelectorAll('a[target=_blank]');</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">セレクタ (3)</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">子孫要素の選択</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.find('selector');</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.querySelectorAll('selector');</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+
+            <h4 class="my-heading02">直前の兄弟要素・直後の兄弟要素</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.prev();
+$el.next();</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.previousElementSibling;
+el.nextElementSibling;</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">セレクタ (4)</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">祖先要素の選択</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.closest(selector);</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">// Edge, IE, Operaは未実装
+el.closest(selector);
+
+// IE10+用
+function closest(el, selector) {
+  const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
+
+  while (el) {
+    if (matchesSelector.call(el, selector)) {
+      return el;
+    } else {
+      el = el.parentElement;
+    }
+  }
+  return null;
+}</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">HTML</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">HTMLの取得</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.html();</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.innerHTML;</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+
+            <h4 class="my-heading02">HTMLの設定</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.html('&lt;p&gt;hogehoge&lt;/p&gt;');</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.innerHTML = '&lt;p&gt;hogehoge&lt;/p&gt;';</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">テキスト</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">テキストの取得</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.text();</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.textContent;</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+
+            <h4 class="my-heading02">テキストの設定</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.text('hogehoge');</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.textContent = 'hogehoge';</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">フォームの値</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">フォーム値の取得</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.val();</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.value;</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+
+            <h4 class="my-heading02">フォーム値の設定</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.val('foo');</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.value = 'foo';</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">属性の値</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">属性値の取得</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.attr('src');</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.getAttribute('src');</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+
+            <h4 class="my-heading02">属性値の設定</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.attr('src', 'xxx.xx');</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.setAttribute('src', 'xxx.xx');</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">data属性の値</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">data属性値の取得</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.data('foo');</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">// IE11+
+el.dataset.foo;
+
+// IE10にも対応するなら、前項『属性値の取得』と同様
+el.getAttribute('data-foo');</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+
+            <h4 class="my-heading02">data属性値の設定</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.data('foo', 'bar');</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">// IE11+
+el.dataset.foo = 'bar';
+
+// 以下略</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">スタイル操作</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">スタイルの取得</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.css('color');</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">window.getComputedStyle(el, null).color;</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+
+            <h4 class="my-heading02">スタイルの設定</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.css('color', '#a02223');</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.style.color = '#a02223';</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">クラス (1)</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">クラスの追加</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.addClass(className);</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.classList.add(className);</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+
+            <h4 class="my-heading02">クラスの削除</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.removeClass(className);</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.classList.remove(className);</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">クラス (2)</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">クラスの有無の切り替え</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.toggleClass(className);</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.classList.toggle(className);</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+
+            <h4 class="my-heading02">クラスの有無の確認</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.hasClass(className);</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.classList.contains(className);</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">要素の追加 (1)</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">最後の子要素として新しい要素を追加</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.append('&lt;p&gt;hoge&lt;/p&gt;');</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.insertAdjacentHTML('beforeend', '&lt;p&gt;hoge&lt;/p&gt;');</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+
+            <h4 class="my-heading02">最初の子要素として新しい要素を追加</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.prepend('&lt;p&gt;hoge&lt;/p&gt;');</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.insertAdjacentHTML('afterbegin', '&lt;p&gt;hoge&lt;/p&gt;');</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+
+            <p class="my-text-notes">[element.insertAdjacentHTML - Web API インターフェイス | MDN] <a href="https://developer.mozilla.org/ja/docs/Web/API/Element/insertAdjacentHTML" target="_blank">https://developer.mozilla.org/ja/docs/Web/API/...</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">要素の追加 (2)</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">要素の後ろに新しい要素を追加</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.before('&lt;p&gt;hoge&lt;/p&gt;');</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.insertAdjacentHTML('beforebegin', '&lt;p&gt;hoge&lt;/p&gt;');</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+
+            <h4 class="my-heading02">要素の前に新しい要素を追加</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.after('&lt;p&gt;hoge&lt;/p&gt;');</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.insertAdjacentHTML('afterend', '&lt;p&gt;hoge&lt;/p&gt;');</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+
+            <p class="my-text-notes">[element.insertAdjacentHTML - Web API インターフェイス | MDN] <a href="https://developer.mozilla.org/ja/docs/Web/API/Element/insertAdjacentHTML" target="_blank">https://developer.mozilla.org/ja/docs/Web/API/...</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">要素の削除</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">全ての子要素を削除</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.empty();</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.innerHTML = '';</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+
+            <h4 class="my-heading02">要素の削除</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.remove();</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">// IEは未実装
+el.remove();
+
+// IE用
+el.parentNode.removeChild(el);</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">幅・高さ (1)</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">ウィンドウの高さ</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$(window).height();</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">// jQueryのようにスクロールバーを除いた高さ
+window.document.documentElement.clientHeight;
+
+// スクロールバーを含めるなら
+window.innerHeight;</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">幅・高さ (2)</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">ドキュメントの高さ</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$(document).height();</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">document.documentElement.scrollHeight;</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+
+            <h4 class="my-heading02">要素の高さ<small>（padding, borderまでを含んだ高さ）</small></h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.outerHeight();</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.offsetHeight;</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">位置・座標 (1)</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">縦スクロールの位置を取得</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$(window).scrollTop();</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">window.pageYOffset;</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">位置・座標 (2)</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">要素の座標を取得</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.offset();</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">function getOffset (el) {
+  const rect = el.getBoundingClientRect();
+
+  return {
+    top: rect.top + window.pageYOffset,
+    left: rect.left + window.pageXOffset
+  }
+}</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">イベント (1)</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">ドキュメントの読み込み完了で発火するイベント</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$(document).ready(eventHandler);</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">document.addEventListener('DOMContentLoaded', eventHandler);</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">イベント (2)</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">イベントをバインドする（on）</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.on(eventName, eventHandler);</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.addEventListener(eventName, eventHandler);</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+
+            <h4 class="my-heading02">イベントをアンバインドする（off）</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.off(eventName, eventHandler);</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.removeEventListener(eventName, eventHandler);</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">繰り返し処理</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">each</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$(selector).each(function(index, el){
+
+});</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">const elements = document.querySelectorAll(selector);
+Array.prototype.forEach.call(elements, function(el, index){
+
+});</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">エフェクト (1)</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">フェードイン / フェードアウト</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.fadeIn();
+$el.fadeOut();</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.style.transition = 'opacity 0.4s';
+
+// fadeIn
+el.style.opacity = '1';
+
+// fadeOut
+el.style.opacity = '0';</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+            <p class="my-text-normal">上記のように書けるけど、基本的にはCSS＋クラスの付け替えで対応したほうが良い。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">エフェクト (2)</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">アニメーション</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$el.animate({
+  params...
+}, speed);</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">el.style.transition = 'all' + speed;
+Object.keys(params).forEach(function(key) {
+  el.style[key] = params[key];
+});</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+            <p class="my-text-normal">上記のように書けるけど、基本的にはCSS＋クラスの付け替えで対応したほうが良い。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">Ajax (1)</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">Fetch API編<small>（ブラウザの対応状況がまだまだ…）</small></h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$.ajax({
+  type: 'get',
+  url: '/my/url'
+})
+.done(function(data, textStatus, jqXHR) {
+  console.log(data.statusText);
+  // => "OK"
+})
+.fail(function(jqXHR, textStatus, errorThrown) {
+  console.log(errorThrown);
+  // => Error Message
+});</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">// Safari, IE, Operaは未実装
+fetch('/my/url', {
+  method: 'get'
+})
+.then(function(response) {
+  if(response.status === 200) {
+    console.log(response.statusText);
+    // => 'OK'
+  } else {
+    console.log(response.statusText);
+    // => Error Message
+  }
+})
+.catch(function(response) {
+  console.log(response);
+  // => 'TypeError: ~'
+});</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">Ajax (2)</h3>
+          <div class="my-page-body">
+            <h4 class="my-heading02">XMLHttpRequest編</h4>
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">$.ajax({
+  type: 'get',
+  url: '/my/url'
+})
+.done(function(data, textStatus, jqXHR) {
+  console.log(data.statusText);
+  // => "OK"
+})
+.fail(function(jqXHR, textStatus, errorThrown) {
+  console.log(errorThrown);
+  // => Error Message
+});</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">const request = new XMLHttpRequest();
+request.open('get', '/my/url', true);
+request.onload = function(event) {
+  if(request.readyState === 4) {
+    if(request.status === 200) {
+      console.log(request.statusText);
+      // => "OK"
+    } else {
+      console.log(request.statusText);
+      // => Error Message
+    }
+  }
+};
+request.onerror = function(event) {
+  console.log(event.type);
+  // => "error"
+};
+request.send(null);</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第3章</span>　jQuery to Vanilla JS</div>
+          <h3 class="my-page-title">Deferred</h3>
+          <div class="my-page-body">
+            <div class="my-flex">
+              <div class="my-flex-item">
+<pre><code class="language-javascript">function asyncFunc() {
+  const d = new $.Deferred();
+  setTimeout(function() {
+    if(true) {
+      d.resolve('resolved');
+    } else {
+      d.reject('failed');
+    }
+  }, 1000);
+  return d.promise();
+}</code></pre>
+              </div>
+              <div class="my-flex-item">
+<pre><code class="language-javascript">// IEは未実装
+function asyncFunc() {
+  const promise = new Promise(function(resolve, reject) {
+    setTimeout(function() {
+      if (true) {
+        resolve('resolved');
+      } else {
+        reject('failed');
+      }
+    }, 1000);
+  });
+  return promise;
+}</code></pre>
+              </div>
+            </div><!-- /.my-flex -->
+          </div>
+        </div>
+      </section>
+
+      <!-- start 第4章 ECMAScript -->
+      <section class="bg-ecmascript frame aligncenter">
+        <div class="wrap">
+          <h2 class="my-chapter-title"><span class="small">第4章</span>　ECMAScript</h2>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第4章</span>　ECMAScript</div>
+          <h3 class="my-page-title">ECMAScript（ES）って何？</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">ECMAScriptは、ECMA Internationalのもとで標準化されているJavaScriptの言語仕様</li>
+              <li class="my-list-item">JavaScriptはECMAScriptの仕様に基づいた言語のひとつ（JavaScript ≠ ECMAScript）</li>
+              <li class="my-list-item">現在多くのブラウザで安定して利用できるバージョンは2009年策定のECMAScript 5th Edition（ES5）</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第4章</span>　ECMAScript</div>
+          <h3 class="my-page-title">ECMAScript 2015 / 2016 / next</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">ECMAScript 6th Edition（ES6）以降は、毎年アップデートしていくことになったため、ECMAScript 2015という呼称に変更（ES6 = ES2015）</li>
+              <li class="my-list-item">2015年リリースの仕様がECMAScript 2015（ES2015）、2016年リリースの仕様がECMAScript 2016（ES2016）</li>
+              <li class="my-list-item">次期ECMAScriptを「ECMAScript next」とか「ES.next」と言ったりもする</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第4章</span>　ECMAScript</div>
+          <h3 class="my-page-title">ECMAScript 2015で追加された仕様 (1)</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">
+                <h4 class="my-list-heading"><code>let</code>, <code>const</code>による変数宣言</h4>
+                <ul class="my-list02">
+                  <li class="my-list-item">従来の変数宣言<code>var</code>に代わるもの。と思ってOK。</li>
+                  <li class="my-list-item"><code>let</code>は再宣言不可、定数を示す<code>const</code>は再代入も不可。</li>
+                  <li class="my-list-item"><code>{}</code>によるブロックスコープが有効に<small>（サヨナラ即時関数）</small>。</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第4章</span>　ECMAScript</div>
+          <h3 class="my-page-title">ECMAScript 2015で追加された仕様 (2)</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">
+                <h4 class="my-list-heading">Arrow Function</h4>
+                <ul class="my-list02">
+                  <li class="my-list-item">今まで<code>function() {...}</code>と書いていたものが<br>
+                  <code>() => {...}</code>と書ける。</li>
+                  <li class="my-list-item">これで作る関数はthisコンテキストを切り替えない。<br>
+                  <small>（サヨナラ<code>var self = this;</code>）</small></li>
+                  <li class="my-list-item">引数が1つの場合は()を省略可能。<small><code>param => {...}</code>でもOK。</small></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第4章</span>　ECMAScript</div>
+          <h3 class="my-page-title">ECMAScript 2015で追加された仕様 (3)</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">
+                <h4 class="my-list-heading">分割代入</h4>
+                複数の変数への代入を１つにまとめることができる。
+<pre><code class="language-javascript">var a = 1, b = 2, c = 3
+//  ↓
+const [a, b, c] = [1, 2, 3]</code></pre>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第4章</span>　ECMAScript</div>
+          <h3 class="my-page-title">ECMAScript 2015で追加された仕様 (4)</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">
+                <h4 class="my-list-heading">Spread operator / スプレッド演算子</h4>
+                関数の呼び出し、配列への代入、分割代入に対して、<br>
+                <code>...</code>により、配列が展開される。
+<pre><code class="language-javascript">var args = [0, 1, 2];
+myFunction.apply(null, args);
+//  ↓
+const args = [0, 1, 2];
+myFunction(...args);</code></pre>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第4章</span>　ECMAScript</div>
+          <h3 class="my-page-title">ECMAScript 2015で追加された仕様 (5)</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">
+                <h4 class="my-list-heading">可変長引数</h4>
+                可変長の引数を受け取ることができるようになった。
+<pre><code class="language-javascript">// こんな感じに
+const func = (x, ...y) => {
+  console.log(x);  // 3
+  console.log(y);  // ['hello', true]
+  return x * y.length;
+}
+func(3, 'hello', true);  // 6</code></pre>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第4章</span>　ECMAScript</div>
+          <h3 class="my-page-title">ECMAScript 2015で追加された仕様 (6)</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">
+                <h4 class="my-list-heading">デフォルト引数</h4>
+                関数に指定する引数の初期値を設定できるようになった。
+<pre><code class="language-javascript">// こんな感じに
+const func = (x, y = 12) => {
+  return x + y;
+}
+func(3, 5);  // 8
+func(3);     // 15</code></pre>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第4章</span>　ECMAScript</div>
+          <h3 class="my-page-title">ECMAScript 2015で追加された仕様 (7)</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">
+                <h4 class="my-list-heading">Template literal</h4>
+                文字列をバッククオート<code>` `</code>で囲むと、
+                <ul class="my-list02">
+                  <li class="my-list-item">複数行の文字列でも、改行がそのまま書ける。</li>
+                  <li class="my-list-item"><code>${}</code>内の変数や式を展開してくれる。</li>
+                  <li class="my-list-item">引用符を含むHTMLコードが書きやすい。</li>
+                </ul>
+<pre><code class="language-javascript">// こんな感じに
+const list = `&lt;ul class="list"&gt;
+  &lt;li class="list-item"&gt;${listName}-01&lt;/li&gt;
+  &lt;li class="list-item"&gt;${listName}-02&lt;/li&gt;
+  &lt;li class="list-item"&gt;${listName}-03&lt;/li&gt;
+&lt;/ul&gt;`
+</code></pre>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第4章</span>　ECMAScript</div>
+          <h3 class="my-page-title">ECMAScript 2015で追加された仕様 (8)</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">class構文＋extends（クラスの継承）</li>
+              <li class="my-list-item">Promise</li>
+            </ul>
+            <p class="my-text-normal">などなど、たくさんの新しい文法が追加されている。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第4章</span>　ECMAScript</div>
+          <h3 class="my-page-title">ECMAScript 2016で追加された仕様</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">
+                <h4 class="my-list-heading">べき乗演算子<code>**</code></h4>
+                <code>x ** x</code>のように、従来の<code>Math.pow(x, x)</code>より簡単
+              </li>
+              <li class="my-list-item">
+                <h4 class="my-list-heading"><code>Array.prototype.includes()</code>メソッド</h4>
+                配列内の値検索が楽になる。<code>indexOf()</code>メソッドに代えて使える
+              </li>
+            </ul>
+            <p class="my-text-normal">などなど。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第4章</span>　ECMAScript</div>
+          <h3 class="my-page-title">ブラウザの対応状況</h3>
+          <div class="my-page-body">
+            <table class="my-table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>ES2015</th>
+                  <th>ES2016</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Chrome</th>
+                  <td>97％</td>
+                  <td>73％</td>
+                </tr>
+                <tr>
+                  <th>Firefox</th>
+                  <td>94％</td>
+                  <td>83％</td>
+                </tr>
+                <tr>
+                  <th>Safari</th>
+                  <td>100％</td>
+                  <td>43％</td>
+                </tr>
+                <tr>
+                  <th>Edge</th>
+                  <td>93％</td>
+                  <td>45％</td>
+                </tr>
+                <tr>
+                  <th>IE</th>
+                  <td>11％</td>
+                  <td>4％</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="3">（2017年3月8日時点 / 各ブラウザ最新版）</td>
+                </tr>
+              </tfoot>
+            </table>
+            <p class="my-text-notes">[ECMAScript 6 compatibility table] <a href="https://kangax.github.io/compat-table/es6/" target="_blank">https://kangax.github.io/compat-table/es6/</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第4章</span>　ECMAScript</div>
+          <h3 class="my-page-title">モダンJavaScriptを使うデメリット</h3>
+          <div class="my-page-body">
+            <ul class="my-list">
+              <li class="my-list-item">IE含めたクロスブラウザ対応が必要な場合には、使えない</li>
+              <li class="my-list-item">もしくは、トランスパイラ（Babel）を利用してES5で動くコードにコンパイルする必要がある</li>
+              <li class="my-list-item">未実装の機能を使いたい場合はPolyfillを利用することもできるが、慎重にしないと将来壊れる可能性もある</li>
+            </ul>
+            <p class="my-text-notes">
+              [Babel · The compiler for writing next generation JavaScript] <a href="https://babeljs.io/" target="_blank">https://babeljs.io/</a><br>
+              [Polyfill - 用語集 | MDN] <a href="https://developer.mozilla.org/ja/docs/Glossary/Polyfill" target="_blank">https://developer.mozilla.org/ja/docs/Glossary/Polyfill</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- start 第5章 実践タイム -->
+      <section class="bg-red frame aligncenter">
+        <div class="wrap">
+          <h2 class="my-chapter-title"><span class="small">第5章</span>　実践タイム</h2>
+        </div>
+      </section>
+
+      <section class="slide-top">
+        <div class="wrap size-80">
+          <div class="text-context my-text-context"><span class="small">第5章</span>　実践タイム</div>
+          <h3 class="my-page-title">jQuery to Vanilla JS</h3>
+          <div class="my-page-body">
+            <ol class="my-numlist">
+              <li class="my-numlist-item">課題ページのjQueryベースで書かれたコードをVanilla JSに書き換えてみよう！<small>（必須）</small></li>
+              <li class="my-numlist-item">ES2015を使ってみよう！</li>
+              <li class="my-numlist-item">演出を加えてみよう！</li>
+            </ol>
+            <p class="my-text-normal">
+              ※ JSエラーなどは必ず解消し、動く状態を保つこと。<br>
+              ※ ただしクロスブラウザ対応は不要。なにかひとつのブラウザで動けばOK。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-black-blue">
+        <span class="background dark" style="background-image:url('./images/slide_cover.jpg')"></span>
+        <div class="wrap aligncenter">
+          <p class="my-conclusion">完</p>
+          <p class="my-text-normal">おつかれさまでした m(_ _)m</p>
+        </div>
+      </section>
+
+    </article>
+    <!-- end article -->
+  </main>
+  <!-- end main --> 
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="./js/lib.js"></script>
+</body>
+</html>
